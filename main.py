@@ -1,13 +1,15 @@
-# predicting sum of customer transactions from Google Merchandise Store data
 
-# Machine Learning: Linear Regression
-
-# importing libraries
-import numpy as np
+# import libraries
+import scipy
+import numpy
+import matplotlib
 import pandas as pd
-from sklearn import preprocessing
-data = pd.read_csv("train.csv.zip")
+import sklearn
+import zipfile
+import datetime
 
-# feature normalization
+# import data
+zf = zipfile.ZipFile('train.csv.zip')
+df = pd.read_csv(zf.open('train.csv')) #, dtype={'channelGrouping': str, 'date': str, 'device': object, 'fullVisitorId': int, 'geoNetwork': object, 'sessionId': int, 'socialEngagementType': str, 'totals': object, 'trafficSource': object, 'visitId': int, 'visitNumber': int, 'visitStartTime': int})
 
-print("Loading... ")
+print(df)
