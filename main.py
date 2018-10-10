@@ -25,17 +25,9 @@ df['trafficSource'] = df['trafficSource'].astype('object')
 df['visitId'] = df['visitId'].astype('uint64')
 df['visitStartTime'] = df['visitStartTime'].astype('uint64')
 
+import ast
+for i in range(df.shape[0]):
+    df.at["rev",i] = ast.literal_eval(df.loc[i,'totals']).get("transactionRevenue")
 
 # looking at data
 print(df.shape)
-
-# ________________________ WIP _______________________________
-# extract the revenue from total
-# eh this can wait
-import re
-hi = df.loc[752,'totals']
-m = re.search('tr.*\\,',hi).group(0)
-
-print(m)
-print(type(m))
-# ________________________ WIP _______________________________
